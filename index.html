@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>2026 Field Renewal & Redesign | FTF Discussion Deck</title>
+
+<style>
+:root {
+  --navy: #0E2841;
+  --blue: #156082;
+  --teal: #0E835C;
+  --orange: #E97132;
+  --green: #196B24;
+  --cyan: #0F9ED5;
+  --light: #F5F7F8;
+  --soft: #E8E8E8;
+  --text: #1A1A1A;
+  --muted: #6B7280;
+  --white: #FFFFFF;
+  --shadow: 0 18px 50px rgba(14, 40, 65, 0.18);
+  --radius: 22px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--navy);
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  overflow: hidden;
+}
+
+.deck {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.slide {
+  width: 100vw;
+  height: 100vh;
+  padding: 54px 68px 42px 68px;
+  background:
+    radial-gradient(circle at top right, rgba(233,113,50,0.14), transparent 30%),
+    linear-gradient(135deg, #FFFFFF 0%, #F7F9FA 60%, #EEF3F5 100%);
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 420ms ease, transform 420ms ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.slide.active {
+  opacity: 1;
+  transform: translateX(0);
+  z-index: 2;
+}
+
+.slide.dark {
+  background:
+    radial-gradient(circle at top right, rgba(233,113,50,0.18), transparent 28%),
+    linear-gradient(135deg, #0E2841 0%, #123B5A 62%, #156082 100%);
+  color: var(--white);
+}
+
+.kicker {
+  color: var(--orange);
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 1.8px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.dark .kicker {
+  color: #FFB088;
+}
+
+h1 {
+  font-size: 58px;
+  line-height: 1.02;
+  letter-spacing: -2.2px;
+  margin: 0;
+  color: var(--navy);
+  max-width: 1050px;
+}
+
+.dark h1 {
+  color: var(--white);
+}
+
+h2 {
+  font-size: 42px;
+  line-height: 1.08;
+  letter-spacing: -1.4px;
+  margin: 0;
+  color: var(--navy);
+  max-width: 1050px;
+}
+
+.dark h2 {
+  color: var(--white);
+}
+
+h3 {
+  font-size: 22px;
+  margin: 0 0 10px 0;
+  color: var(--navy);
+}
+
+.dark h3 {
+  color: var(--white);
+}
+
+p {
+  font-size: 20px;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.lead {
+  font-size: 27px;
+  line-height: 1.28;
+  color: #24364A;
+  max-width: 980px;
+  margin-top: 22px;
+}
+
+.dark .lead {
+  color: rgba(255,255,255,0.9);
+}
+
+.small {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.35;
+}
+
+.dark .small {
+  color: rgba(255,255,255,0.7);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.logo {
+  font-weight: 800;
+  color: var(--navy);
+  letter-spacing: -0.5px;
+  font-size: 19px;
+}
+
+.dark .logo {
+  color: var(--white);
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(21,96,130,0.08);
+  color: var(--blue);
+  border: 1px solid rgba(21,96,130,0.12);
+  border-radius: 999px;
+  padding: 9px 14px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.dark .tag {
+  background: rgba(255,255,255,0.1);
+  color: var(--white);
+  border-color: rgba(255,255,255,0.16);
+}
+
+.grid {
+  display: grid;
+  gap: 20px;
+}
+
+.grid.two {
+  grid-template-columns: 1fr 1fr;
+}
+
+.grid.three {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid.four {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.card {
+  background: rgba(255,255,255,0.86);
+  border: 1px solid rgba(14,40,65,0.08);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: 0 10px 34px rgba(14,40,65,0.08);
+}
+
+.dark .card {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.15);
+  color: var(--white);
+}
+
+.card.emphasis {
+  background: var(--navy);
+  color: var(--white);
+}
+
+.card.orange {
+  border-top: 6px solid var(--orange);
+}
+
+.card.blue {
+  border-top: 6px solid var(--blue);
+}
+
+.card.green {
+  border-top: 6px solid var(--teal);
+}
+
+.metric {
+  font-size: 42px;
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: -1.4px;
+  color: var(--navy);
+  margin: 10px 0 8px;
+}
+
+.dark .metric,
+.card.emphasis .metric {
+  color: var(--white);
+}
+
+.metric span {
+  font-size: 18px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.dark .metric span,
+.card.emphasis .metric span {
+  color: rgba(255,255,255,0.7);
+}
+
+.label {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.dark .label,
+.card.emphasis .label {
+  color: rgba(255,255,255,0.7);
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--muted);
+  font-size: 13px;
+  padding-top: 16px;
+}
+
+.dark .footer {
+  color: rgba(255,255,255,0.68);
+}
+
+.progress {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 5px;
+  width: 0%;
+  background: var(--orange);
+  z-index: 10;
+  transition: width 300ms ease;
+}
+
+.controls {
+  position: fixed;
+  right: 24px;
+  bottom: 20px;
+  display: flex;
+  gap: 8px;
+  z-index: 20;
+}
+
+button {
+  border: 0;
+  background: rgba(14,40,65,0.92);
+  color: white;
+  border-radius: 999px;
+  width: 42px;
+  height: 42px;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+
+button:hover {
+  background: var(--orange);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 10px 32px rgba(14,40,65,0.08);
+}
+
+.table th {
+  background: var(--navy);
+  color: white;
+  text-align: left;
+  padding: 14px 16px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #E6EBEF;
+  font-size: 16px;
+  vertical-align: top;
+}
+
+.table tr:last-child td {
+  border-bottom: 0;
+}
+
+.table .best {
+  color: var(--teal);
+  font-weight: 800;
+}
+
+.table .risk {
+  color: var(--orange);
+  font-weight: 800;
+}
+
+.pill {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(14,131,92,0.12);
+  color: var(--teal);
+  font-size: 13px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.pill.orange {
+  background: rgba(233,113,50,0.12);
+  color: var(--orange);
+}
+
+.pill.blue {
+  background: rgba(21,96,130,0.12);
+  color: var(--blue);
+}
+
+.big-number {
+  font-size: 96px;
+  line-height: 0.9;
+  font-weight: 900;
+  letter-spacing: -5px;
+  color: var(--orange);
+}
+
+.split {
+  display: grid;
+  grid-template-columns: 0.96fr 1.04fr;
+  gap: 34px;
+  align-items: center;
+}
+
+.statement {
+  border-left: 8px solid var(--orange);
+  padding-left: 22px;
+  margin-top: 20px;
+}
+
+.statement p {
+  font-size: 26px;
+  line-height: 1.26;
+  color: #223246;
+  font-weight: 700;
+}
+
+.dark .statement p {
+  color: rgba(255,255,255,0.92);
+}
+
+.bar-chart {
+  display: grid;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.bar-row {
+  display: grid;
+  grid-template-columns: 170px 1fr 95px;
+  gap: 14px;
+  align-items: center;
+}
+
+.bar-label {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.bar-track {
+  height: 24px;
+  background: #E8EEF1;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--blue);
+}
+
+.bar-fill.orange {
+  background: var(--orange);
+}
+
+.bar-fill.green {
+  background: var(--teal);
+}
+
+.bar-value {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--navy);
+  text-align: right;
+}
+
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.step {
+  position: relative;
+  background: white;
+  border: 1px solid rgba(14,40,65,0.08);
+  border-radius: 18px;
+  padding: 18px;
+  min-height: 154px;
+}
+
+.step::before {
+  content: "";
+  position: absolute;
+  top: 33px;
+  right: -13px;
+  width: 14px;
+  height: 2px;
+  background: var(--orange);
+}
+
+.step:last-child::before {
+  display: none;
+}
+
+.step-num {
+  width: 31px;
+  height: 31px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--navy);
+  color: white;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.step-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+.step-text {
+  font-size: 14px;
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+.callout {
+  background: linear-gradient(135deg, var(--navy), var(--blue));
+  color: white;
+  border-radius: 28px;
+  padding: 32px;
+  box-shadow: var(--shadow);
+}
+
+.callout .lead {
+  color: rgba(255,255,255,0.9);
+}
+
+.checklist {
+  display: grid;
+  gap: 14px;
+}
+
+.check {
+  display: grid;
+  grid-template-columns: 26px 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+.check-dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--teal);
+  color: white;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 900;
+  margin-top: 3px;
+}
+
+.check p {
+  font-size: 18px;
+  line-height: 1.35;
+}
+
+.scenario-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 310px;
+}
+
+.scenario-card::after {
+  content: "";
+  position: absolute;
+  right: -56px;
+  bottom: -56px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: rgba(233,113,50,0.11);
+}
+
+.scenario-card.winner {
+  border: 2px solid rgba(14,131,92,0.45);
+}
+
+.ribbon {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: var(--teal);
+  color: white;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.6px;
+}
+
+.print-note {
+  display: none;
+}
+
+@media print {
+  html, body {
+    overflow: visible;
+    background: white;
+  }
+  .deck {
+    height: auto;
+  }
+  .slide {
+    position: relative;
+    opacity: 1;
+    transform: none;
+    page-break-after: always;
+    height: 100vh;
+  }
+  .controls, .progress {
+    display: none;
+  }
+  .print-note {
+    display: block;
+  }
+}
+
+@media (max-width: 900px) {
+  html, body {
+    overflow: auto;
+  }
+  .deck {
+    height: auto;
+  }
+  .slide {
+    position: relative;
+    opacity: 1;
+    transform: none;
+    height: auto;
+    min-height: 100vh;
+    padding: 34px 22px;
+  }
+  h1 {
+    font-size: 42px;
+  }
+  h2 {
+    font-size: 32px;
+  }
+  .grid.two, .grid.three, .grid.four, .split, .timeline {
+    grid-template-columns: 1fr;
+  }
+  .controls, .progress {
+    display: none;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="deck">
+
+  <!-- Slide 1 -->
+  <section class="slide dark active">
+    <div class="header">
+      <div>
+        <div class="kicker">FTF discussion deck | 2026 decision</div>
+        <h1>2026 Field Renewal & Redesign</h1>
+        <p class="lead">Why we propose replacing Sunrise with Gold in Stage 2 — and why the high-density soil scenario creates the strongest economic and operational case.</p>
+      </div>
+      <div class="logo">Valle y Pampa × Family Farms Peru</div>
+    </div>
+
+    <div class="grid three">
+      <div class="card">
+        <div class="label">Core move</div>
+        <div class="metric">Sunrise → Gold</div>
+        <p>Gradual field renewal focused on a variety with stronger potential under a redesigned planting structure.</p>
+      </div>
+      <div class="card">
+        <div class="label">Design decision</div>
+        <div class="metric">6,265 <span>plants/ha</span></div>
+        <p>Higher density in soil, increasing plant count by approximately 27% versus the base scenario.</p>
+      </div>
+      <div class="card">
+        <div class="label">Economic thesis</div>
+        <div class="metric">Highest NPV</div>
+        <p>Most attractive financial scenario in the current analysis, with materially lower capital risk than pots.</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>Confidential working material for strategic discussion</span>
+      <span>01</span>
+    </div>
+  </section>
+
+  <!-- Slide 2 -->
+  <section class="slide">
+    <div class="header">
+      <div>
+        <div class="kicker">Executive message</div>
+        <h2>The recommendation is not only about lower CAPEX. It is about higher profitability with lower execution risk.</h2>
+      </div>
+      <div class="tag">Decision-oriented discussion</div>
+    </div>
+
+    <div class="split">
+      <div>
+        <p class="lead">The analysis points to one scenario that best balances productivity, capital efficiency and operational feasibility.</p>
+        <div class="statement">
+          <p>High-density soil renewal with Gold delivers the highest NPV, highest IRR, fastest payback and similar stabilized EBITDA to pots, while requiring only a fraction of the capital.</p>
+        </div>
+      </div>
+
+      <div class="grid two">
+        <div class="card orange">
+          <div class="label">Financial upside</div>
+          <div class="metric">US$ 15.3MM</div>
+          <p>Incremental NPV versus the base Gold scenario.</p>
+        </div>
+        <div class="card blue">
+          <div class="label">Capital discipline</div>
+          <div class="metric">~26%</div>
+          <p>Approximate CAPEX required versus the pot scenario.</p>
+        </div>
+        <div class="card green">
+          <div class="label">Return profile</div>
+          <div class="metric">204%</div>
+          <p>Estimated IRR for the high-density soil scenario.</p>
+        </div>
+        <div class="card">
+          <div class="label">Execution</div>
+          <div class="metric">0.85 <span>years</span></div>
+          <p>Estimated payback, the fastest of the three scenarios.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>Key message: economic superiority + operational viability</span>
+      <span>02</span>
+    </div>
+  </section>
+
+  <!-- Slide 3 -->
+  <section class="slide">
+    <div class="header">
+      <div>
+        <div class="kicker">Why change</div>
+        <h2>The question is no longer whether to renew. The question is how to redesign the field to maximize value per hectare.</h2>
+      </div>
+      <div class="tag">Strategic framing</div>
+    </div>
+
+    <div class="grid four">
+      <div class="card">
+        <div class="big-number">1</div>
+        <h3>Plant productivity</h3>
+        <p>Is the current plant-level productivity competitive enough to justify maintaining the existing structure?</p>
+      </div>
+      <div class="card">
+        <div class="big-number">2</div>
+        <h3>Hectare productivity</h3>
+        <p>Are we extracting the maximum economic output per hectare under the current planting density?</p>
+      </div>
+      <div class="card">
+        <div class="big-number">3</div>
+        <h3>System choice</h3>
+        <p>Do pots create enough incremental value to compensate for their materially higher capital intensity?</p>
+      </div>
+      <div class="card">
+        <div class="big-number">4</div>
+        <h3>Varietal fit</h3>
+        <p>Does Gold allow a higher-density redesign in soil without forcing us into a pot-based system?</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <h3>Objective</h3>
+      <p class="lead">Define the operationally viable alternative that maximizes hectare-level profitability in Stage 2, currently 100% Sunrise, under a proposed transition to Gold.</p>
+    </div>
+
+    <div class="footer">
+      <span>The redesign is a value-per-hectare decision, not a simple replacement program</span>
+      <span>03</span>
+    </div>
+  </section>
+
+  <!-- Slide 4 -->
+  <section class="slide">
+    <div class="header">
+      <div>
+        <div class="kicker">Strategic alternatives</div>
+        <h2>Three scenarios were assessed across productivity, CAPEX, return and execution risk.</h2>
+      </div>
+      <div class="tag">Scenario logic</div>
+    </div>
+
+    <div class="grid three">
+      <div class="card scenario-card">
+        <h3>1. Base Gold scenario</h3>
+        <div class="metric">4,915 <span>plants/ha</span></div>
+        <p>Renewal into Gold under the current planting structure.</p>
+        <br />
+        <span class="pill blue">Lower CAPEX</span>
+        <span class="pill orange">Longer yield curve</span>
+      </div>
+
+      <div class="card scenario-card winner">
+        <div class="ribbon">Recommended</div>
+        <h3>2. Gold in soil / higher density</h3>
+        <div class="metric">6,265 <span>plants/ha</span></div>
+        <p>Gradual renewal into Gold, increasing density in soil.</p>
+        <br />
+        <span class="pill">Best financial case</span>
+        <span class="pill blue">Operationally viable</span>
+      </div>
+
+      <div class="card scenario-card">
+        <h3>3. Gold in pots / higher density</h3>
+        <div class="metric">6,265 <span>plants/ha</span></div>
+        <p>Gradual renewal into Gold using a pot-based production system.</p>
+        <br />
+        <span class="pill orange">Highest CAPEX</span>
+        <span class="pill blue">Short yield curve</span>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>High density is the key design variable; system choice determines capital risk</span>
+      <span>04</span>
+    </div>
+  </section>
+
+  <!-- Slide 5 -->
+  <section class="slide">
+    <div class="header">
+      <div>
+        <div class="kicker">Operational comparison</div>
+        <h2>Gold allows high-density soil renewal, avoiding the need to move directly into a pot system.</h2>
+      </div>
+      <div class="tag">Operational viability</div>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Scenario</th>
+          <th>Density</th>
+          <th>Yield curve</th>
+          <th>CAPEX / ha</th>
+          <th>Operational implication</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Base Gold scenario</strong></td>
+          <td>4,915 plants/ha</td>
+          <td>Longer</td>
+          <td>~US$ 23,000</td>
+          <td>Lower capital need, but slower productivity recovery.</td>
+        </tr>
+        <tr>
+          <td><strong>Soil / higher density</strong> <span class="pill">Recommended</span></td>
+          <td class="best">6,265 plants/ha</td>
+          <td class="best">Shorter / lower 2026 kg gap</td>
+          <td class="best">~US$ 27,600</td>
+          <td>Best balance between faster yield recovery, standardization and capital efficiency.</td>
+        </tr>
+        <tr>
+          <td><strong>Pots / higher density</strong></td>
+          <td>6,265 plants/ha</td>
+          <td>Shorter</td>
+          <td class="risk">~US$ 105,000</td>
+          <td>Similar production ambition, but much higher capital intensity and greater design complexity.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="grid three">
+      <div class="card">
+        <div class="label">Density increase</div>
+        <div class="metric">+27%</div>
+        <p>Versus the current/base planting design.</p>
+      </div>
+      <div class="card">
+        <div class="label">Key enabler</div>
+        <div class="metric">Gold</div>
+        <p>Varietal characteristics make soil-based higher density feasible.</p>
+      </div>
+      <div class="card">
+        <div class="label">Main constraint</div>
+        <div class="metric">Timing</div>
+        <p>Planting date compliance is critical to avoid execution delays and yield gaps.</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>Changing the field design affects operational standardization; the recommendation minimizes unnecessary disruption</span>
+      <span>05</span>
+    </div>
+  </section>
+
+  <!-- Slide 6 -->
+  <section class="slide">
+    <div class="header">
+      <div>
+        <div class="kicker">Financial comparison</div>
+        <h2>The high-density soil scenario is the strongest financial alternative.</h2>
+      </div>
+      <div class="tag">NPV · IRR · Payback · EBITDA</div>
+    </div>
+
+    <div class="grid four">
+      <div class="card green">
+        <div class="label">NPV</div>
+        <div class="metric">US$ 60.8MM</div>
+        <p>Highest among the evaluated scenarios.</p>
+      </div>
+      <div class="card green">
+        <div class="label">Incremental NPV vs base</div>
+        <div class="metric">US$ 15.3MM</div>
+        <p>Value creation above the base Gold scenario.</p>
+      </div>
+      <div class="card green">
+        <div class="label">IRR</div>
+        <div class="metric">204%</div>
+        <p>Highest return profile in the current analysis.</p>
+      </div>
+      <div class="card green">
+        <div class="label">Payback</div>
+        <div class="metric">0.85 <span>years</span></div>
+        <p>Fastest capital recovery period.</p>
+      </div>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Financial indicator</th>
+          <th>Base Gold</th>
+          <th>Soil / higher density</th>
+          <th>Pots / higher density</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Initial CAPEX</strong></td>
+          <td>US$ 1.895MM</td>
+          <td class="best">US$ 2.870MM</td>
+          <td class="risk">US$ 10.920MM</td>
+        </tr>
+        <tr>
+          <td><strong>NPV</strong></td>
+          <td>US$ 45.544MM</td>
+          <td class="best">US$ 60.820MM</td>
+          <td>US$ 54.612MM</td>
+        </tr>
+        <tr>
+          <td><strong>Incremental NPV vs base</strong></td>
+          <td>—</td>
+          <td class="best">US$ 15.276MM</td>
+          <td>US$ 9.068MM</td>
+        </tr>
+        <tr>
+          <td><strong>IRR</strong></td>
+          <td>174%</td>
+          <td class="best">204%</td>
+          <td>69%</td>
+        </tr>
+        <tr>
+          <td><strong>Payback</strong></td>
+          <td>0.92 years</td>
+          <td class="best">0.85 years</td>
+          <td>2.50 years</td>
+        </tr>
+        <tr>
+          <td><strong>Stabilized EBITDA 2030</strong></td>
+          <td>US$ 10.323MM</td>
+          <td class="best">US$ 13.348MM</td>
+          <td>US$ 13.348MM</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="footer">
+      <span>Financial figures based on current model outputs in the working material</span>
+      <span>06</span>
+    </div>
+  </section>
+
+  <!-- Slide 7 -->
+  <section class="slide">
+    <div class="header">
+      <div>
+        <div class="kicker">Capital efficiency</div>
+        <h2>Pots deliver similar stabilized EBITDA, but require a disproportionate capital commitment.</h2>
+      </div>
+      <div class="tag">Why not pots now?</div>
+    </div>
+
+    <div class="split">
+      <div class="card">
+        <h3>Initial CAPEX comparison</h3>
+        <div class="bar-chart">
+          <div class="bar-row">
+            <div class="bar-label">Base Gold</div>
+            <div class="bar-track"><div class="bar-fill blue" style="width:17.4%;"></div></div>
+            <div class="bar-value">US$ 1.9MM</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Soil / high density</div>
+            <div class="bar-track"><div class="bar-fill green" style="width:26.3%;"></div></div>
+            <div class="bar-value">US$ 2.9MM</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Pots / high density</div>
+            <div class="bar-track"><div class="bar-fill orange" style="width:100%;"></div></div>
+            <div class="bar-value">US$ 10.9MM</div>
+          </div>
+        </div>
+        <br />
+        <p class="small">The pot scenario requires almost 4x the initial CAPEX of the recommended soil scenario.</p>
+      </div>
+
+      <div>
+        <div class="callout">
+          <h3>Economic conclusion</h3>
+          <p class="lead">When two scenarios converge to similar stabilized EBITDA, the superior decision is the one that reaches it with lower capital, lower payback and higher IRR.</p>
+        </div>
+        <br />
+        <div class="grid two">
+          <div class="card">
+            <div class="label">Soil IRR</div>
+            <div class="metric">204%</div>
+            <p>Return is amplified by lower capital intensity.</p>
+          </div>
+          <div class="card">
+            <div class="label">Pots IRR</div>
+            <div class="metric">69%</div>
+            <p>Returns are diluted by higher upfront investment.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>The recommendation preserves optionality while avoiding premature overcapitalization</span>
+      <span>07</span>
+    </div>
+  </section>
+
+  <!-- Slide 8 -->
+  <section class="slide">
+    <div class="header">
+      <div>
+        <div class="kicker">Recommendation</div>
+        <h2>Proceed with Gold renewal in soil at higher density.</h2>
+      </div>
+      <div class="tag">Proposed path</div>
+    </div>
+
+    <div class="grid three">
+      <div class="card emphasis">
+        <div class="label">What</div>
+        <div class="metric">Gold</div>
+        <p>Replace Sunrise in Stage 2 with Gold, subject to final planting schedule and execution readiness.</p>
+      </div>
+      <div class="card emphasis">
+        <div class="label">How</div>
+        <div class="metric">Soil</div>
+        <p>Maintain soil production system and increase density to 6,265 plants per hectare.</p>
+      </div>
+      <div class="card emphasis">
+        <div class="label">Why</div>
+        <div class="metric">Value</div>
+        <p>Maximize NPV and IRR while limiting capital exposure and avoiding unnecessary pot-system complexity.</p>
+      </div>
+    </div>
+
+    <div class="statement">
+      <p>The recommended scenario is the best available combination of profitability, hectare productivity, capital discipline and execution reliability.</p>
+    </div>
+
+    <div class="footer">
+      <span>Recommendation for FTF discussion and alignment</span>
+      <span>08</span>
+    </div>
+  </section>
+
+  <!-- Slide 9 -->
+  <section class="slide">
+    <div class="header">
+      <div>
+        <div class="kicker">Implementation logic</div>
+        <h2>Execution should be managed as a controlled renewal program, not as an isolated planting change.</h2>
+      </div>
+      <div class="tag">How we execute</div>
+    </div>
+
+    <div class="timeline">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-title">Final alignment</div>
+        <div class="step-text">Confirm FTF agreement on scenario, density, variety and business rationale.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-title">Planting schedule</div>
+        <div class="step-text">Lock the critical planting window and backward-plan operational requirements.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-title">Field preparation</div>
+        <div class="step-text">Prepare soil, irrigation, layout and operating standards for the higher-density design.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-title">Controlled rollout</div>
+        <div class="step-text">Execute renewal gradually, controlling yield gap, labor needs and field standardization.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-title">Monitoring</div>
+        <div class="step-text">Track plant performance, productivity per hectare, sanitary pressure and economic KPIs.</div>
+      </div>
+    </div>
+
+    <div class="grid two">
+      <div class="card green">
+        <h3>Critical success factor</h3>
+        <p>Planting date compliance is the main execution condition. Delays would reduce the value of the shorter yield curve and increase the 2026 productivity gap.</p>
+      </div>
+      <div class="card orange">
+        <h3>Management principle</h3>
+        <p>The higher-density system must preserve operational standardization. Any design change should be simple enough to scale and manage consistently.</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>Implementation discipline protects the economics of the decision</span>
+      <span>09</span>
+    </div>
+  </section>
+
+  <!-- Slide 10 -->
+  <section class="slide">
+    <div class="header">
+      <div>
+        <div class="kicker">Risk management</div>
+        <h2>The recommendation reduces capital risk, but still requires active control of technical and operational variables.</h2>
+      </div>
+      <div class="tag">Main risks and mitigants</div>
+    </div>
+
+    <div class="grid two">
+      <div class="card">
+        <h3>Risk 1: planting delay</h3>
+        <div class="checklist">
+          <div class="check">
+            <div class="check-dot">✓</div>
+            <p>Backward-plan from planting deadline, with clear accountability for plant availability, land preparation and irrigation readiness.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Risk 2: higher sanitary pressure</h3>
+        <div class="checklist">
+          <div class="check">
+            <div class="check-dot">✓</div>
+            <p>Use a preventive sanitary matrix adapted to higher density, phenological stage and seasonal risk probability.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Risk 3: unvalidated upside per plant</h3>
+        <div class="checklist">
+          <div class="check">
+            <div class="check-dot">✓</div>
+            <p>Do not underwrite unproven upside as guaranteed. Treat additional plant-level potential as upside optionality.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Risk 4: operational complexity</h3>
+        <div class="checklist">
+          <div class="check">
+            <div class="check-dot">✓</div>
+            <p>Keep the system in soil to avoid unnecessary complexity, reduce CAPEX, and preserve consistency across the operating platform.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>The preferred scenario is lower-risk than pots, not risk-free</span>
+      <span>10</span>
+    </div>
+  </section>
+
+  <!-- Slide 11 -->
+  <section class="slide dark">
+    <div class="header">
+      <div>
+        <div class="kicker">Decision required</div>
+        <h2>We seek FTF alignment to move forward with the high-density soil renewal plan.</h2>
+      </div>
+      <div class="logo">FTF × V&P</div>
+    </div>
+
+    <div class="grid three">
+      <div class="card">
+        <div class="label">Decision 1</div>
+        <div class="metric">Approve</div>
+        <p>Strategic direction: Sunrise replacement with Gold in Stage 2.</p>
+      </div>
+      <div class="card">
+        <div class="label">Decision 2</div>
+        <div class="metric">Align</div>
+        <p>Planting design: 6,265 plants per hectare in soil.</p>
+      </div>
+      <div class="card">
+        <div class="label">Decision 3</div>
+        <div class="metric">Execute</div>
+        <p>Critical path: plant availability, planting date, field readiness and monitoring cadence.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <p class="lead">Recommended decision: proceed with Gold renewal in soil at higher density, as the scenario with the strongest economic return and the most balanced execution profile.</p>
+    </div>
+
+    <div class="footer">
+      <span>End of discussion deck</span>
+      <span>11</span>
+    </div>
+  </section>
+
+  <!-- Slide 12 -->
+  <section class="slide">
+    <div class="header">
+      <div>
+        <div class="kicker">Appendix</div>
+        <h2>Key assumptions to validate before final approval.</h2>
+      </div>
+      <div class="tag">Working assumptions</div>
+    </div>
+
+    <div class="grid two">
+      <div class="card">
+        <h3>Technical assumptions</h3>
+        <div class="checklist">
+          <div class="check">
+            <div class="check-dot">✓</div>
+            <p>Gold performance under higher-density soil design is technically feasible.</p>
+          </div>
+          <div class="check">
+            <div class="check-dot">✓</div>
+            <p>Sanitary and canopy management can be controlled under the proposed density.</p>
+          </div>
+          <div class="check">
+            <div class="check-dot">✓</div>
+            <p>Field design changes do not materially disrupt operating standardization.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Financial assumptions</h3>
+        <div class="checklist">
+          <div class="check">
+            <div class="check-dot">✓</div>
+            <p>CAPEX estimates remain within the current model range.</p>
+          </div>
+          <div class="check">
+            <div class="check-dot">✓</div>
+            <p>Yield curve and stabilized EBITDA assumptions are validated with final agronomic inputs.</p>
+          </div>
+          <div class="check">
+            <div class="check-dot">✓</div>
+            <p>Timing risk is explicitly reflected in the execution plan and sensitivity analysis.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="statement">
+      <p>Final recommendation should be confirmed after validating planting timing, plant availability, agronomic controls and model sensitivities.</p>
+    </div>
+
+    <div class="footer">
+      <span>Appendix for internal alignment</span>
+      <span>12</span>
+    </div>
+  </section>
+
+</div>
+
+<div class="progress" id="progress"></div>
+
+<div class="controls">
+  <button onclick="prevSlide()" aria-label="Previous slide">‹</button>
+  <button onclick="nextSlide()" aria-label="Next slide">›</button>
+</div>
+
+<script>
+const slides = Array.from(document.querySelectorAll('.slide'));
+const progress = document.getElementById('progress');
+let current = 0;
+
+function showSlide(index) {
+  current = Math.max(0, Math.min(index, slides.length - 1));
+  slides.forEach((slide, i) => {
+    slide.classList.toggle('active', i === current);
+  });
+  progress.style.width = `${((current + 1) / slides.length) * 100}%`;
+  document.title = `Slide ${current + 1} | 2026 Field Renewal & Redesign`;
+}
+
+function nextSlide() {
+  showSlide(current + 1);
+}
+
+function prevSlide() {
+  showSlide(current - 1);
+}
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'ArrowRight' || event.key === 'PageDown' || event.key === ' ') {
+    nextSlide();
+  }
+  if (event.key === 'ArrowLeft' || event.key === 'PageUp') {
+    prevSlide();
+  }
+  if (event.key === 'Home') {
+    showSlide(0);
+  }
+  if (event.key === 'End') {
+    showSlide(slides.length - 1);
+  }
+});
+
+let touchStartX = 0;
+let touchEndX = 0;
+
+document.addEventListener('touchstart', (event) => {
+  touchStartX = event.changedTouches[0].screenX;
+});
+
+document.addEventListener('touchend', (event) => {
+  touchEndX = event.changedTouches[0].screenX;
+  const delta = touchEndX - touchStartX;
+  if (Math.abs(delta) > 50) {
+    if (delta < 0) nextSlide();
+    if (delta > 0) prevSlide();
+  }
+});
+
+showSlide(0);
+</script>
+</body>
+</html>
