@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stage 2 Replacement Strategy</title>
+<title>Stage 2 Replacement Strategy | Family Farms Peru</title>
 
 <style>
 :root{
@@ -25,59 +25,95 @@ body{
   font-family:Arial,Helvetica,sans-serif;
   background:var(--cream);
   color:var(--ink);
-  line-height:1.5;
+  line-height:1.45;
 }
 
-header{
+.top-actions{
+  position:fixed;
+  top:18px;
+  right:22px;
+  z-index:100;
+}
+
+.pdf-button{
   background:var(--burgundy);
   color:white;
-  padding:70px 8%;
-}
-
-.logo{
-  color:var(--gold);
+  border:none;
+  padding:10px 16px;
+  border-radius:5px;
+  cursor:pointer;
   font-weight:bold;
-  letter-spacing:3px;
-  font-size:13px;
-  text-transform:uppercase;
-  margin-bottom:45px;
 }
 
-h1{
-  font-size:64px;
-  line-height:.98;
-  max-width:950px;
-  margin-bottom:25px;
-}
-
-.subtitle{
-  font-size:22px;
-  max-width:850px;
-  color:#F4EDE5;
-}
-
-nav{
+.page{
+  position:relative;
+  width:100%;
+  min-height:100vh;
   background:white;
+  padding:96px 70px 78px 70px;
   border-bottom:1px solid var(--line);
-  padding:14px 8%;
-  position:sticky;
-  top:0;
-  z-index:20;
+  page-break-after:always;
 }
 
-nav a{
-  color:var(--burgundy);
-  text-decoration:none;
-  margin-right:22px;
-  font-size:13px;
-  font-weight:bold;
-  text-transform:uppercase;
+.page-header{
+  position:absolute;
+  top:24px;
+  left:70px;
 }
 
-section{
-  max-width:1200px;
-  margin:auto;
-  padding:62px 8%;
+.page-header img{
+  height:42px;
+  max-width:220px;
+  object-fit:contain;
+}
+
+.page-footer{
+  position:absolute;
+  bottom:22px;
+  left:70px;
+  right:70px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:11px;
+  color:var(--gray);
+  letter-spacing:.4px;
+  border-top:1px solid var(--line);
+  padding-top:10px;
+}
+
+.cover{
+  background:var(--burgundy);
+  color:white;
+}
+
+.cover .page-footer{
+  color:#F4EDE5;
+  border-top:1px solid rgba(255,255,255,.25);
+}
+
+.cover .cover-content{
+  max-width:950px;
+  margin-top:115px;
+}
+
+.cover h1{
+  font-size:70px;
+  line-height:.96;
+  margin-bottom:24px;
+  color:white;
+}
+
+.cover h2{
+  color:var(--gold);
+  font-size:32px;
+  margin-bottom:18px;
+}
+
+.cover p{
+  font-size:22px;
+  color:#F4EDE5;
+  max-width:820px;
 }
 
 .kicker{
@@ -87,6 +123,13 @@ section{
   letter-spacing:2px;
   font-size:12px;
   margin-bottom:10px;
+}
+
+h1{
+  color:var(--burgundy);
+  font-size:56px;
+  line-height:1.02;
+  margin-bottom:20px;
 }
 
 h2{
@@ -102,48 +145,61 @@ h3{
   margin-bottom:10px;
 }
 
-p{margin-bottom:14px}
+p{
+  margin-bottom:14px;
+}
 
 .lead{
   font-size:19px;
   color:var(--gray);
-  max-width:920px;
+  max-width:960px;
 }
 
 .grid{
   display:grid;
   grid-template-columns:repeat(12,1fr);
-  gap:20px;
-  margin-top:28px;
+  gap:18px;
+  margin-top:26px;
 }
 
 .card{
   background:white;
   border:1px solid var(--line);
-  border-radius:14px;
-  padding:24px;
+  border-radius:12px;
+  padding:22px;
 }
 
+.card.soft{
+  background:var(--cream);
+}
+
+.span3{grid-column:span 3}
 .span4{grid-column:span 4}
 .span6{grid-column:span 6}
 .span12{grid-column:span 12}
 
-ul{padding-left:20px;margin-top:10px}
-li{margin-bottom:8px}
+ul{
+  padding-left:20px;
+  margin-top:10px;
+}
+
+li{
+  margin-bottom:7px;
+}
 
 .box{
   background:white;
   border-left:7px solid var(--gold);
-  padding:24px;
-  margin-top:28px;
-  border-radius:10px;
+  padding:22px;
+  margin-top:24px;
+  border-radius:8px;
 }
 
 .metric{
   font-size:38px;
   font-weight:bold;
   color:var(--burgundy);
-  margin:12px 0 6px;
+  margin:10px 0 5px;
 }
 
 .small{
@@ -155,31 +211,44 @@ table{
   width:100%;
   border-collapse:collapse;
   background:white;
-  margin-top:28px;
+  margin-top:24px;
   border:1px solid var(--line);
 }
 
 th{
   background:var(--burgundy);
   color:white;
-  padding:13px;
+  padding:11px;
   text-align:right;
-  font-size:13px;
+  font-size:12px;
 }
 
 td{
-  padding:13px;
+  padding:11px;
   border-bottom:1px solid var(--line);
   text-align:right;
   vertical-align:top;
-  font-size:14px;
+  font-size:13px;
 }
 
-th:first-child,td:first-child{text-align:left}
+th:first-child,td:first-child{
+  text-align:left;
+}
 
-.positive{color:var(--green);font-weight:bold}
-.negative{color:var(--red);font-weight:bold}
-.neutral{color:var(--gray);font-weight:bold}
+.positive{
+  color:var(--green);
+  font-weight:bold;
+}
+
+.negative{
+  color:var(--red);
+  font-weight:bold;
+}
+
+.neutral{
+  color:var(--gray);
+  font-weight:bold;
+}
 
 .badge{
   display:inline-block;
@@ -193,47 +262,150 @@ th:first-child,td:first-child{text-align:left}
 .good{background:var(--green)}
 .risk{background:var(--red)}
 
-footer{
-  background:var(--burgundy);
-  color:white;
-  padding:36px 8%;
-  text-align:center;
-  font-weight:bold;
-  letter-spacing:1px;
+.contents-list{
+  margin-top:28px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px 36px;
+  max-width:900px;
 }
 
-@media(max-width:850px){
-  h1{font-size:42px}
+.contents-item{
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+  padding:14px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.contents-number{
+  color:var(--burgundy);
+  font-weight:bold;
+  width:34px;
+}
+
+.contents-text{
+  color:var(--ink);
+  font-weight:bold;
+}
+
+@media print{
+  body{
+    background:white;
+  }
+
+  .top-actions{
+    display:none;
+  }
+
+  .page{
+    min-height:100vh;
+    break-after:page;
+    page-break-after:always;
+    border-bottom:none;
+  }
+
+  @page{
+    size:landscape;
+    margin:0;
+  }
+}
+
+@media(max-width:900px){
+  .page{
+    padding:90px 28px 78px 28px;
+  }
+
+  .page-header{
+    left:28px;
+  }
+
+  .page-footer{
+    left:28px;
+    right:28px;
+  }
+
+  .cover h1{
+    font-size:44px;
+  }
+
+  h1{font-size:38px}
   h2{font-size:32px}
-  .span4,.span6{grid-column:span 12}
-  nav{display:none}
-  th,td{font-size:12px;padding:9px}
+
+  .span3,.span4,.span6{
+    grid-column:span 12;
+  }
+
+  .contents-list{
+    grid-template-columns:1fr;
+  }
+
+  th,td{
+    font-size:11px;
+    padding:8px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <div class="logo">Family Farms Peru</div>
-  <h1>Stage 2 Replacement Strategy</h1>
-  <p class="subtitle">
-    Descriptive analysis of the Sunrise to Gold replacement decision and the preferred implementation model for Stage 2.
-  </p>
-</header>
+<div class="top-actions">
+  <button class="pdf-button" onclick="window.print()">Download PDF</button>
+</div>
 
-<nav>
-  <a href="#context">Context</a>
-  <a href="#framework">Framework</a>
-  <a href="#gold">Gold</a>
-  <a href="#financial">Financial</a>
-  <a href="#stage2">Stage 2</a>
-  <a href="#implementation">Implementation</a>
-  <a href="#transition">Transition Risk</a>
-  <a href="#proposal">Proposal</a>
-</nav>
+<section class="page cover">
+  <div class="page-header">
+    <img src="logo_FFP-removebg-preview.png" alt="Family Farms Peru">
+  </div>
 
-<section id="context">
+  <div class="cover-content">
+    <h1>Stage 2 Replacement Strategy</h1>
+    <h2>Sunrise → Gold</h2>
+    <p>
+      Descriptive analysis of the varietal replacement decision and the preferred implementation model for Stage 2.
+    </p>
+    <p>104 hectares | Family Farms Peru</p>
+  </div>
+
+  <div class="page-footer">
+    <span>Family Farms Peru</span>
+    <span>Stage 2 Replacement Strategy</span>
+  </div>
+</section>
+
+<section class="page">
+  <div class="page-header">
+    <img src="logo_FFP-removebg-preview.png" alt="Family Farms Peru">
+  </div>
+
+  <div class="kicker">Contents</div>
+  <h1>Structure of the analysis</h1>
+
+  <div class="contents-list">
+    <div class="contents-item"><div class="contents-number">01</div><div class="contents-text">Context and decision scope</div></div>
+    <div class="contents-item"><div class="contents-number">02</div><div class="contents-text">Strategic framework</div></div>
+    <div class="contents-item"><div class="contents-number">03</div><div class="contents-text">Sunrise to Gold rationale</div></div>
+    <div class="contents-item"><div class="contents-number">04</div><div class="contents-text">Financial analysis</div></div>
+    <div class="contents-item"><div class="contents-number">05</div><div class="contents-text">Impact on total Stage 2 contribution</div></div>
+    <div class="contents-item"><div class="contents-number">06</div><div class="contents-text">Implementation alternatives</div></div>
+    <div class="contents-item"><div class="contents-number">07</div><div class="contents-text">Soil vs containers</div></div>
+    <div class="contents-item"><div class="contents-number">08</div><div class="contents-text">Production transition risk</div></div>
+    <div class="contents-item"><div class="contents-number">09</div><div class="contents-text">Known and unvalidated factors</div></div>
+    <div class="contents-item"><div class="contents-number">10</div><div class="contents-text">Proposal and conclusion</div></div>
+  </div>
+
+  <div class="page-footer">
+    <span>Family Farms Peru</span>
+    <span>Contents</span>
+  </div>
+</section>
+
+<section class="page">
+  <div class="page-header">
+    <img src="logo_FFP-removebg-preview.png" alt="Family Farms Peru">
+  </div>
+
   <div class="kicker">01 | Context</div>
   <h2>What is being evaluated</h2>
   <p class="lead">
@@ -259,9 +431,18 @@ footer{
   <div class="box">
     <strong>Objective:</strong> evaluate the most operationally viable approach to maximize productivity, quality, contribution and relevance in Stage 2.
   </div>
+
+  <div class="page-footer">
+    <span>Family Farms Peru</span>
+    <span>Context</span>
+  </div>
 </section>
 
-<section id="framework">
+<section class="page">
+  <div class="page-header">
+    <img src="logo_FFP-removebg-preview.png" alt="Family Farms Peru">
+  </div>
+
   <div class="kicker">02 | Strategic Framework</div>
   <h2>Decision criteria</h2>
   <p class="lead">
@@ -298,9 +479,18 @@ footer{
       </ul>
     </div>
   </div>
+
+  <div class="page-footer">
+    <span>Family Farms Peru</span>
+    <span>Strategic Framework</span>
+  </div>
 </section>
 
-<section id="gold">
+<section class="page">
+  <div class="page-header">
+    <img src="logo_FFP-removebg-preview.png" alt="Family Farms Peru">
+  </div>
+
   <div class="kicker">03 | Sunrise to Gold</div>
   <h2>Gold is the correct varietal move</h2>
   <p class="lead">
@@ -341,26 +531,35 @@ footer{
   <div class="box">
     <strong>Conclusion:</strong> replacing Sunrise with Gold is the right direction. The remaining question is how to implement Gold.
   </div>
+
+  <div class="page-footer">
+    <span>Family Farms Peru</span>
+    <span>Sunrise to Gold</span>
+  </div>
 </section>
 
-<section id="financial">
+<section class="page">
+  <div class="page-header">
+    <img src="logo_FFP-removebg-preview.png" alt="Family Farms Peru">
+  </div>
+
   <div class="kicker">04 | Financial Analysis</div>
   <h2>Gold generates higher value and contribution</h2>
 
   <div class="grid">
-    <div class="card span4">
+    <div class="card span4 soft">
       <h3>Sunrise NPV</h3>
       <div class="metric">USD 17.58M</div>
       <p class="small">No replacement scenario</p>
     </div>
 
-    <div class="card span4">
+    <div class="card span4 soft">
       <h3>Gold NPV</h3>
       <div class="metric">USD 24.14M</div>
       <p class="small">Full replacement scenario</p>
     </div>
 
-    <div class="card span4">
+    <div class="card span4 soft">
       <h3>Incremental value</h3>
       <div class="metric">+37%</div>
       <p class="small">+USD 6.56M NPV</p>
@@ -436,9 +635,18 @@ footer{
   <p class="small">
     *2026 remains essentially a Sunrise production year. The reduction reflects the replacement executed in November 2026. Figures in USD millions.
   </p>
+
+  <div class="page-footer">
+    <span>Family Farms Peru</span>
+    <span>Financial Analysis</span>
+  </div>
 </section>
 
-<section id="stage2">
+<section class="page">
+  <div class="page-header">
+    <img src="logo_FFP-removebg-preview.png" alt="Family Farms Peru">
+  </div>
+
   <div class="kicker">05 | Stage 2 Impact</div>
   <h2>Impact on total Stage 2 contribution</h2>
   <p class="lead">
@@ -467,9 +675,18 @@ footer{
   <div class="box">
     The negative impact is concentrated in 2027 and is manageable at the total Stage 2 level. From 2028 onward, the replacement becomes contribution-positive and structurally improves the field’s earnings profile.
   </div>
+
+  <div class="page-footer">
+    <span>Family Farms Peru</span>
+    <span>Stage 2 Impact</span>
+  </div>
 </section>
 
-<section id="implementation">
+<section class="page">
+  <div class="page-header">
+    <img src="logo_FFP-removebg-preview.png" alt="Family Farms Peru">
+  </div>
+
   <div class="kicker">06 | Implementation Alternatives</div>
   <h2>How should Gold be implemented?</h2>
   <p class="lead">
@@ -522,9 +739,18 @@ footer{
   <div class="box">
     Containers require approximately USD 8.05M of additional investment over 104 ha compared with higher density in soil.
   </div>
+
+  <div class="page-footer">
+    <span>Family Farms Peru</span>
+    <span>Implementation Alternatives</span>
+  </div>
 </section>
 
-<section>
+<section class="page">
+  <div class="page-header">
+    <img src="logo_FFP-removebg-preview.png" alt="Family Farms Peru">
+  </div>
+
   <div class="kicker">07 | Soil vs Containers</div>
   <h2>Certainty versus redevelopment risk</h2>
   <p class="lead">
@@ -588,9 +814,18 @@ footer{
       <td class="neutral">Uncertain incremental benefit</td>
     </tr>
   </table>
+
+  <div class="page-footer">
+    <span>Family Farms Peru</span>
+    <span>Soil vs Containers</span>
+  </div>
 </section>
 
-<section id="transition">
+<section class="page">
+  <div class="page-header">
+    <img src="logo_FFP-removebg-preview.png" alt="Family Farms Peru">
+  </div>
+
   <div class="kicker">08 | Production Transition Risk</div>
   <h2>Transition risk is materially different by alternative</h2>
 
@@ -624,10 +859,19 @@ footer{
   <div class="box">
     No clear production advantage has been demonstrated for containers under our conditions. In contrast, the container alternative requires substantially higher capital investment, greater infrastructure modifications, higher execution complexity and may increase the production gap during transition.
   </div>
+
+  <div class="page-footer">
+    <span>Family Farms Peru</span>
+    <span>Production Transition Risk</span>
+  </div>
 </section>
 
-<section>
-  <div class="kicker">09 | What We Know / What Has Not Been Demonstrated</div>
+<section class="page">
+  <div class="page-header">
+    <img src="logo_FFP-removebg-preview.png" alt="Family Farms Peru">
+  </div>
+
+  <div class="kicker">09 | Known and Unvalidated Factors</div>
   <h2>What should drive the decision</h2>
 
   <div class="grid">
@@ -653,9 +897,18 @@ footer{
       </ul>
     </div>
   </div>
+
+  <div class="page-footer">
+    <span>Family Farms Peru</span>
+    <span>Known and Unvalidated Factors</span>
+  </div>
 </section>
 
-<section id="proposal">
+<section class="page">
+  <div class="page-header">
+    <img src="logo_FFP-removebg-preview.png" alt="Family Farms Peru">
+  </div>
+
   <div class="kicker">10 | Proposal</div>
   <h2>Recommended implementation</h2>
 
@@ -679,9 +932,18 @@ footer{
       <p>Requires approximately USD 8.05M less CAPEX than containers across 104 ha.</p>
     </div>
   </div>
+
+  <div class="page-footer">
+    <span>Family Farms Peru</span>
+    <span>Proposal</span>
+  </div>
 </section>
 
-<section>
+<section class="page">
+  <div class="page-header">
+    <img src="logo_FFP-removebg-preview.png" alt="Family Farms Peru">
+  </div>
+
   <div class="kicker">11 | Conclusions</div>
   <h2>Final conclusion</h2>
 
@@ -704,11 +966,12 @@ footer{
   <div class="box">
     Based on the information currently available, the soil-based high-density alternative provides the most attractive balance of value creation, capital efficiency, operational simplicity and implementation certainty.
   </div>
-</section>
 
-<footer>
-  #SOMOSNUESTRAGENTE
-</footer>
+  <div class="page-footer">
+    <span>Family Farms Peru</span>
+    <span>Conclusions</span>
+  </div>
+</section>
 
 </body>
 </html>
