@@ -3,96 +3,162 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Stage 2 | Sunrise to Gold Replacement Strategy</title>
+  <title>Stage 2 Replacement Strategy | Sunrise to Gold</title>
+
   <style>
     :root {
       --green:#12382b;
+      --green2:#1f5a43;
       --gold:#d6a84f;
       --cream:#f7f3e8;
-      --gray:#5f6b66;
       --light:#ffffff;
+      --gray:#5f6b66;
+      --red:#b23b3b;
+      --good:#1c7c54;
+      --border:#e2e2d8;
+    }
+
+    * {
+      box-sizing:border-box;
     }
 
     body {
       margin:0;
-      font-family: Inter, Arial, sans-serif;
+      font-family:Inter, Arial, sans-serif;
       background:var(--cream);
       color:var(--green);
       line-height:1.5;
     }
 
     header {
-      background:linear-gradient(135deg, var(--green), #1f5a43);
+      background:linear-gradient(135deg,var(--green),var(--green2));
       color:white;
-      padding:70px 8%;
+      padding:78px 8% 86px;
+    }
+
+    header .eyebrow {
+      color:var(--gold);
+      text-transform:uppercase;
+      letter-spacing:2px;
+      font-size:14px;
+      font-weight:700;
+      margin-bottom:18px;
     }
 
     header h1 {
-      font-size:44px;
-      max-width:900px;
-      margin:0 0 20px;
-      line-height:1.1;
+      font-size:52px;
+      max-width:1050px;
+      line-height:1.05;
+      margin:0 0 24px;
     }
 
     header p {
-      font-size:20px;
-      max-width:760px;
-      color:#e8eee9;
+      font-size:21px;
+      max-width:880px;
+      color:#e9f0ec;
+    }
+
+    nav {
+      background:white;
+      padding:18px 8%;
+      position:sticky;
+      top:0;
+      z-index:10;
+      box-shadow:0 3px 16px rgba(0,0,0,.08);
+    }
+
+    nav a {
+      margin-right:22px;
+      color:var(--green);
+      text-decoration:none;
+      font-weight:700;
+      font-size:14px;
     }
 
     section {
-      padding:55px 8%;
-      max-width:1150px;
+      max-width:1180px;
       margin:auto;
+      padding:60px 8%;
     }
 
     h2 {
-      font-size:30px;
-      margin-bottom:18px;
-      border-left:6px solid var(--gold);
-      padding-left:14px;
+      font-size:34px;
+      margin:0 0 18px;
+      border-left:7px solid var(--gold);
+      padding-left:16px;
+    }
+
+    h3 {
+      margin-top:0;
+      font-size:22px;
+    }
+
+    .lead {
+      font-size:19px;
+      color:var(--gray);
+      max-width:920px;
     }
 
     .cards {
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:20px;
-      margin-top:25px;
+      gap:22px;
+      margin-top:28px;
     }
 
     .card {
       background:white;
       border-radius:18px;
       padding:26px;
-      box-shadow:0 10px 25px rgba(0,0,0,.08);
+      box-shadow:0 10px 28px rgba(0,0,0,.08);
+      border:1px solid var(--border);
     }
 
-    .card h3 {
-      margin-top:0;
-      color:var(--green);
+    .card .label {
+      font-size:13px;
+      text-transform:uppercase;
+      letter-spacing:1.3px;
+      color:var(--gold);
+      font-weight:800;
+      margin-bottom:10px;
     }
 
     .metric {
-      font-size:34px;
-      font-weight:800;
+      font-size:38px;
+      font-weight:900;
       color:var(--gold);
-      margin:10px 0;
+      margin:8px 0 6px;
+    }
+
+    .small {
+      font-size:13px;
+      color:var(--gray);
+    }
+
+    .highlight {
+      background:#fff8e5;
+      border-left:7px solid var(--gold);
+      padding:26px;
+      border-radius:16px;
+      margin-top:28px;
+      box-shadow:0 8px 22px rgba(0,0,0,.05);
     }
 
     table {
       width:100%;
       border-collapse:collapse;
       background:white;
-      border-radius:16px;
+      border-radius:18px;
       overflow:hidden;
-      box-shadow:0 10px 25px rgba(0,0,0,.08);
-      margin-top:25px;
+      margin-top:28px;
+      box-shadow:0 10px 28px rgba(0,0,0,.08);
     }
 
     th {
       background:var(--green);
       color:white;
-      padding:14px;
+      padding:15px;
+      font-size:14px;
       text-align:right;
     }
 
@@ -101,9 +167,10 @@
     }
 
     td {
-      padding:14px;
-      border-bottom:1px solid #e6e6e6;
+      padding:15px;
+      border-bottom:1px solid var(--border);
       text-align:right;
+      vertical-align:top;
     }
 
     tr:last-child td {
@@ -111,29 +178,69 @@
     }
 
     .positive {
-      color:#1c7c54;
-      font-weight:700;
+      color:var(--good);
+      font-weight:800;
     }
 
     .negative {
-      color:#b23b3b;
+      color:var(--red);
+      font-weight:800;
+    }
+
+    .neutral {
+      color:var(--gray);
       font-weight:700;
     }
 
-    .highlight {
-      background:#fff8e5;
-      border-left:6px solid var(--gold);
-      padding:24px;
-      border-radius:14px;
-      margin-top:25px;
+    .two-col {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:28px;
+      margin-top:28px;
+    }
+
+    ul {
+      padding-left:20px;
+    }
+
+    li {
+      margin-bottom:8px;
+    }
+
+    .decision {
+      font-size:22px;
+      font-weight:800;
+      color:var(--green);
     }
 
     footer {
       background:var(--green);
       color:white;
-      padding:35px 8%;
       text-align:center;
+      padding:42px 8%;
       margin-top:50px;
+    }
+
+    @media(max-width:800px) {
+      header h1 {
+        font-size:38px;
+      }
+
+      .two-col {
+        grid-template-columns:1fr;
+      }
+
+      nav {
+        display:none;
+      }
+
+      table {
+        font-size:13px;
+      }
+
+      th, td {
+        padding:10px;
+      }
     }
   </style>
 </head>
@@ -141,101 +248,240 @@
 <body>
 
 <header>
-  <h1>Stage 2 Replacement Strategy: Sunrise to Gold</h1>
+  <div class="eyebrow">Stage 2 | Replacement and Field Redesign</div>
+  <h1>Sunrise to Gold Replacement Strategy</h1>
   <p>
-    A descriptive analysis of why replacing Sunrise with Gold is the right strategic decision,
-    and why increasing density in soil is the preferred implementation approach.
+    Descriptive analysis of the decision to replace Sunrise with Gold and the preferred implementation model:
+    higher density in soil versus a container-based system.
   </p>
 </header>
 
+<nav>
+  <a href="#context">Context</a>
+  <a href="#decision">Decision</a>
+  <a href="#alternatives">Alternatives</a>
+  <a href="#financial">Financial</a>
+  <a href="#stage2">Stage 2 Impact</a>
+  <a href="#proposal">Proposal</a>
+  <a href="#conclusion">Conclusion</a>
+</nav>
+
+<section id="context">
+  <h2>1. Context</h2>
+  <p class="lead">
+    Stage 2 is currently planted with Sunrise. The replacement strategy must address two different questions:
+    first, whether Sunrise should be replaced by Gold; second, how Gold should be implemented.
+  </p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="label">Key Question</div>
+      <h3>Plant Performance</h3>
+      <p>Is current plant productivity competitive enough to justify maintaining the existing Sunrise structure?</p>
+    </div>
+
+    <div class="card">
+      <div class="label">Key Question</div>
+      <h3>Productivity per Hectare</h3>
+      <p>Are we maximizing yield per hectare under the current planting design and varietal mix?</p>
+    </div>
+
+    <div class="card">
+      <div class="label">Key Question</div>
+      <h3>Production System</h3>
+      <p>Should we migrate to a container-based model, or can we capture the required gains in soil?</p>
+    </div>
+
+    <div class="card">
+      <div class="label">Key Question</div>
+      <h3>Optimal Density</h3>
+      <p>What density maximizes performance while preserving operational simplicity and financial discipline?</p>
+    </div>
+  </div>
+
+  <div class="highlight">
+    <p class="decision">
+      Objective: evaluate the most operationally viable approach to maximize productivity per hectare in Stage 2,
+      currently 100% Sunrise, proposed conversion to Gold.
+    </p>
+  </div>
+</section>
+
+<section id="decision">
+  <h2>2. The Core Decision</h2>
+
+  <p class="lead">
+    The replacement of Sunrise with Gold is not the main point of debate. The analysis shows that Gold is superior
+    from a quality, efficiency, contribution and strategic relevance perspective.
+  </p>
+
+  <div class="two-col">
+    <div class="card">
+      <h3>Decision Already Supported</h3>
+      <ul>
+        <li>Gold generates higher contribution than Sunrise.</li>
+        <li>Gold has a higher average price due to a stronger jumbo profile.</li>
+        <li>Gold improves harvest productivity and cost per kg.</li>
+        <li>Gold is better aligned with our strategic focus on quality and efficiency.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Actual Discussion</h3>
+      <ul>
+        <li>How should Gold be implemented?</li>
+        <li>Should we increase density in soil using the current system?</li>
+        <li>Or should we adopt a container-based model with materially higher CAPEX?</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <section>
-  <h2>1. Strategic Focus</h2>
-  <p>
-    Our strategic priorities are <strong>efficiency</strong> and <strong>quality</strong>.
-    The replacement strategy must therefore be evaluated not only financially, but also through
-    its impact on productivity, fruit quality, operational simplicity and relevance within the group.
+  <h2>3. Strategic Focus</h2>
+  <p class="lead">
+    Our strategic priorities are efficiency and quality. The implementation decision should be evaluated based on
+    how each alternative contributes to these priorities, as well as to our relevance within the group.
   </p>
 
   <div class="cards">
     <div class="card">
       <h3>Efficiency</h3>
-      <p>Gold significantly improves harvesting productivity, reduces cost per kg and improves worker earning potential.</p>
+      <ul>
+        <li>Higher harvest productivity.</li>
+        <li>Lower cost per kg.</li>
+        <li>Better worker earning potential.</li>
+        <li>More attractive farm environment for labor.</li>
+      </ul>
     </div>
+
     <div class="card">
       <h3>Quality</h3>
-      <p>Gold offers better firmness, larger fruit size, more consistency and stronger postharvest performance than Sunrise.</p>
+      <ul>
+        <li>Higher firmness.</li>
+        <li>Larger fruit size.</li>
+        <li>More consistent postharvest performance.</li>
+        <li>Lower operational risk than Sunrise.</li>
+      </ul>
     </div>
+
     <div class="card">
       <h3>Relevance</h3>
-      <p>Maximizing Gold strengthens our contribution to the highest-value genetic mix within the group.</p>
+      <ul>
+        <li>Higher contribution to the group’s value mix.</li>
+        <li>Greater participation in the most valuable genetics.</li>
+        <li>Stronger role as a relevant production platform.</li>
+      </ul>
     </div>
   </div>
 </section>
 
-<section>
-  <h2>2. Core Decision</h2>
-  <div class="highlight">
-    <p>
-      The replacement of Sunrise with Gold is not the main debate. Based on quality,
-      efficiency, contribution and strategic relevance, the migration to Gold is clearly superior.
-    </p>
-    <p>
-      The real decision is <strong>how to implement Gold</strong>: through increased density in soil,
-      using the current operating system, or through a higher-CAPEX container-based model.
-    </p>
-  </div>
-</section>
-
-<section>
-  <h2>3. Implementation Alternatives</h2>
+<section id="alternatives">
+  <h2>4. Implementation Alternatives</h2>
+  <p class="lead">
+    The analysis considers three reference scenarios. The main comparison is between increasing density in soil
+    and moving into containers at high density.
+  </p>
 
   <table>
     <tr>
-      <th>Alternative</th>
+      <th>Scenario</th>
       <th>Density</th>
-      <th>System</th>
+      <th>Yield Curve</th>
       <th>CAPEX / ha</th>
-      <th>Operational Risk</th>
+      <th>Comment</th>
     </tr>
     <tr>
-      <td>Current Gold Base</td>
+      <td>Base Gold Scenario</td>
       <td>4,915 plants/ha</td>
-      <td>Soil</td>
+      <td>Longer</td>
       <td>~USD 23,000</td>
-      <td>Low</td>
+      <td>Current design adapted to Gold.</td>
     </tr>
     <tr>
       <td>Higher Density in Soil</td>
       <td>6,265 plants/ha</td>
-      <td>Soil</td>
+      <td>Shorter / lower 2026 kg gap</td>
       <td>~USD 27,600</td>
-      <td>Low / Medium</td>
+      <td>+27% density with a known operating system.</td>
     </tr>
     <tr>
       <td>Higher Density in Containers</td>
       <td>6,265 plants/ha</td>
-      <td>Containers</td>
+      <td>Shorter</td>
       <td>~USD 105,000</td>
-      <td>High</td>
+      <td>Higher density but with much higher CAPEX and operational complexity.</td>
     </tr>
   </table>
+
+  <div class="highlight">
+    <p>
+      The container alternative requires almost four times the CAPEX per hectare versus the higher-density soil option.
+      Therefore, any additional yield benefit would need to be large and sufficiently validated to justify the capital
+      intensity and operational change.
+    </p>
+  </div>
 </section>
 
 <section>
-  <h2>4. Financial Comparison: Sunrise vs Gold</h2>
+  <h2>5. Operational Considerations</h2>
 
   <div class="cards">
     <div class="card">
+      <h3>Standardization</h3>
+      <p>
+        Changing the layout and production system affects operational standardization. Soil-based higher density
+        preserves the current model and avoids introducing a different operating structure within the same field.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Sanitary Risk</h3>
+      <p>
+        Higher density shortens the yield curve but may introduce additional sanitary complexity. This must be managed,
+        particularly if the system departs from the current validated field operation.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Varietal Factor</h3>
+      <p>
+        The varietal factor is highly relevant. The feasibility of increasing density has been analyzed specifically
+        with Eureka Gold, which is the variety that enables this change in soil.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Execution Timing</h3>
+      <p>
+        Planting date compliance is critical. The proposed soil scenario represents lower CAPEX and lower risk,
+        with faster and more immediate execution.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="financial">
+  <h2>6. Financial Analysis: Sunrise vs Gold</h2>
+
+  <div class="cards">
+    <div class="card">
+      <div class="label">No Replacement</div>
       <h3>Sunrise NPV</h3>
       <div class="metric">USD 17.58M</div>
     </div>
+
     <div class="card">
+      <div class="label">Full Replacement</div>
       <h3>Gold NPV</h3>
       <div class="metric">USD 24.14M</div>
     </div>
+
     <div class="card">
-      <h3>Incremental Value</h3>
+      <div class="label">Incremental Value</div>
+      <h3>Gold vs Sunrise</h3>
       <div class="metric">+37%</div>
+      <p class="small">+USD 6.56M NPV</p>
     </div>
   </div>
 
@@ -249,12 +495,28 @@
       <th>2030</th>
     </tr>
     <tr>
+      <td>Sunrise Sales</td>
+      <td>13.23</td>
+      <td>13.23</td>
+      <td>13.09</td>
+      <td>11.78</td>
+      <td>11.78</td>
+    </tr>
+    <tr>
       <td>Sunrise Contribution</td>
       <td>4.98</td>
       <td>4.98</td>
       <td>4.85</td>
       <td>4.07</td>
       <td>4.07</td>
+    </tr>
+    <tr>
+      <td>Gold Sales</td>
+      <td>12.41*</td>
+      <td>3.59</td>
+      <td>15.78</td>
+      <td>17.80</td>
+      <td>19.22</td>
     </tr>
     <tr>
       <td>Gold Contribution</td>
@@ -273,7 +535,7 @@
       <td class="positive">+7.11</td>
     </tr>
     <tr>
-      <td>Incremental % vs Sunrise</td>
+      <td>Incremental Contribution %</td>
       <td class="negative">-3%</td>
       <td class="negative">-91%</td>
       <td class="positive">+79%</td>
@@ -282,11 +544,19 @@
     </tr>
   </table>
 
-  <p><small>*2026 remains essentially a Sunrise production year, with a slight reduction due to replacement in November.</small></p>
+  <p class="small">
+    *2026 remains essentially a Sunrise production year. The slight reduction reflects the replacement executed in November 2026.
+    Figures in USD millions.
+  </p>
 </section>
 
-<section>
-  <h2>5. Impact on Total Stage 2</h2>
+<section id="stage2">
+  <h2>7. Impact on Total Stage 2</h2>
+
+  <p class="lead">
+    The decision should not be read only at the 104 ha block level. The relevant management view is the impact on
+    total Stage 2 contribution, considering the 600 ha field base.
+  </p>
 
   <table>
     <tr>
@@ -309,47 +579,91 @@
 
   <div class="highlight">
     <p>
-      The negative impact is concentrated in 2027 and remains manageable at the Stage 2 level.
-      From 2028 onward, the contribution becomes strongly positive and structurally improves
-      the profitability profile of the field.
+      The negative impact is concentrated in 2027 and is manageable at the total Stage 2 level.
+      From 2028 onward, the contribution becomes positive and structurally improves the profitability profile
+      of the field.
     </p>
   </div>
 </section>
 
-<section>
-  <h2>6. Operational View</h2>
+<section id="proposal">
+  <h2>8. Proposal</h2>
+
+  <div class="highlight">
+    <p class="decision">
+      Replace Sunrise with Gold in Stage 2 by increasing planting density in soil.
+    </p>
+  </div>
 
   <div class="cards">
     <div class="card">
-      <h3>Soil Higher Density</h3>
-      <p>
-        Uses the current production system, requires materially lower CAPEX, allows faster execution
-        and avoids introducing a new operating model.
-      </p>
+      <h3>Why Soil?</h3>
+      <ul>
+        <li>Maintains the current operating model.</li>
+        <li>Requires materially lower CAPEX than containers.</li>
+        <li>Reduces implementation risk.</li>
+        <li>Allows faster execution.</li>
+      </ul>
     </div>
+
     <div class="card">
-      <h3>Containers</h3>
-      <p>
-        Requires almost 4x the investment per hectare, adds operational complexity and changes
-        the standardization of the current production model.
-      </p>
+      <h3>Why Higher Density?</h3>
+      <ul>
+        <li>Increases productivity per hectare.</li>
+        <li>Shortens the yield recovery curve.</li>
+        <li>Better captures the productive potential of Gold.</li>
+        <li>Improves contribution without changing the production system.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Why Not Containers?</h3>
+      <ul>
+        <li>~USD 105,000 CAPEX/ha.</li>
+        <li>Almost 4x the soil high-density CAPEX.</li>
+        <li>Higher operational complexity.</li>
+        <li>Requires stronger validation to justify the incremental investment.</li>
+      </ul>
     </div>
   </div>
 </section>
 
-<section>
-  <h2>7. Conclusion</h2>
+<section id="conclusion">
+  <h2>9. Conclusions</h2>
+
+  <div class="cards">
+    <div class="card">
+      <h3>1. Gold is the Correct Varietal Move</h3>
+      <p>
+        Replacing Sunrise with Gold improves quality, efficiency, contribution and strategic relevance.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>2. Implementation Matters</h3>
+      <p>
+        The central question is not whether to move to Gold, but how to do it with the best balance of return,
+        speed, risk and capital discipline.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>3. Soil Higher Density is Preferred</h3>
+      <p>
+        Increasing density in soil captures the value of Gold while preserving the current system and avoiding
+        the much higher CAPEX of containers.
+      </p>
+    </div>
+  </div>
 
   <div class="highlight">
-    <p>
-      Replacing Sunrise with Gold is the value-creating decision. The key question is implementation.
+    <p class="decision">
+      The most economically and operationally convenient alternative is to replace Sunrise with Gold in Stage 2,
+      increasing density to 6,265 plants per hectare in soil.
     </p>
     <p>
-      Increasing density in soil captures the strategic benefits of Gold with significantly lower CAPEX,
-      lower operational complexity, faster implementation and stronger alignment with the current field model.
-    </p>
-    <p>
-      Therefore, the preferred alternative is to replace Sunrise with Gold in Stage 2 using higher density in soil.
+      This allows us to reach higher yields than the current structure, with approximately one quarter of the CAPEX
+      required by the container alternative, while preserving operational simplicity and improving contribution.
     </p>
   </div>
 </section>
