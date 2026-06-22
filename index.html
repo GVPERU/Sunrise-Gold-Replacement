@@ -1,54 +1,123 @@
-:root {
-  --ffp-burgundy: #A7081D;
-  --ffp-green: #548235;
-  --ffp-green-dark: #385723;
-  --ffp-gold: #FFC000;
-  --ffp-cream: #F6F1E7;
-  --ffp-paper: #FFFFFF;
-  --ffp-ink: #252423;
-  --ffp-gray: #6F6A64;
-  --ffp-line: #D8D0C3;
-  --ffp-red: #C00000;
-  --ffp-positive: #548235;
-}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stage 2 Replacement Strategy</title>
 
-header {
-  min-height: 92vh;
-  background:
-    linear-gradient(135deg, rgba(167,8,29,.96), rgba(84,130,53,.92)),
-    radial-gradient(circle at 82% 18%, rgba(255,192,0,.38), transparent 35%);
-  color: white;
-  padding: 72px 8% 60px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
+  <style>
+    :root {
+      --ffp-burgundy: #A7081D;
+      --ffp-green: #548235;
+      --ffp-green-dark: #385723;
+      --ffp-gold: #FFC000;
+      --ffp-cream: #F6F1E7;
+      --ffp-paper: #FFFFFF;
+      --ffp-ink: #252423;
+      --ffp-gray: #6F6A64;
+      --ffp-line: #D8D0C3;
+      --ffp-red: #C00000;
+      --ffp-positive: #548235;
+    }
 
-.brand,
-.section-kicker,
-.card-label {
-  color: var(--ffp-gold);
-}
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--ffp-cream);
+      color: var(--ffp-ink);
+    }
 
-h2,
-h3,
-nav a {
-  color: var(--ffp-burgundy);
-}
+    header {
+      min-height: 90vh;
+      background:
+        linear-gradient(135deg, rgba(167,8,29,.96), rgba(84,130,53,.92)),
+        radial-gradient(circle at 82% 18%, rgba(255,192,0,.38), transparent 35%);
+      color: white;
+      padding: 72px 8%;
+    }
 
-.metric {
-  color: var(--ffp-burgundy);
-}
+    .brand {
+      color: var(--ffp-gold);
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
 
-th {
-  background: var(--ffp-burgundy);
-}
+    h1 {
+      font-size: 68px;
+      line-height: 0.98;
+      max-width: 980px;
+      margin-top: 70px;
+    }
 
-.callout {
-  background: #FFF7DC;
-  border-left: 7px solid var(--ffp-gold);
-}
+    h2, h3 {
+      color: var(--ffp-burgundy);
+    }
 
-.footer {
-  background: var(--ffp-burgundy);
-}
+    section {
+      padding: 70px 8%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 26px;
+      box-shadow: 0 12px 28px rgba(0,0,0,.08);
+      border: 1px solid var(--ffp-line);
+    }
+
+    .section-kicker,
+    .card-label {
+      color: var(--ffp-gold);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .callout {
+      background: #FFF7DC;
+      border-left: 7px solid var(--ffp-gold);
+      border-radius: 16px;
+      padding: 24px;
+      margin-top: 28px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      margin-top: 28px;
+    }
+
+    th {
+      background: var(--ffp-burgundy);
+      color: white;
+      padding: 14px;
+    }
+
+    td {
+      padding: 14px;
+      border-bottom: 1px solid var(--ffp-line);
+    }
+
+    .positive {
+      color: var(--ffp-positive);
+      font-weight: 800;
+    }
+
+    .negative {
+      color: var(--ffp-red);
+      font-weight: 800;
+    }
+
+    footer {
+      background: var(--ffp-burgundy);
+      color: white;
+      text-align: center;
+      padding: 40px;
+      font-weight: 800;
+    }
+  </style>
+</head>
