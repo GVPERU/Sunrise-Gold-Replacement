@@ -58,7 +58,41 @@ th:first-child,td:first-child{text-align:left}
 .contents-item{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--line)}
 .contents-number{color:var(--burgundy);font-weight:bold;width:34px}.contents-text{color:var(--ink);font-weight:bold}
 .compact{padding-top:135px}.compact h2{font-size:36px;margin-bottom:12px}.metrics-row{margin-top:18px}.metrics-row .card{padding:15px}.metrics-row h3{font-size:15px;margin-bottom:4px}.metrics-row .metric{font-size:27px}.small-table th{padding:8px;font-size:11px}.small-table td{padding:8px;font-size:12px}
-@media print{body{background:white}.top-actions{display:none}.page{min-height:100vh;break-after:page;page-break-after:always;border-bottom:none}@page{size:landscape;margin:0}}
+@page{
+  size: 16in 9in;
+  margin: 0;
+}
+
+@media print{
+  html,
+  body{
+    width: 16in;
+    height: 9in;
+    margin: 0;
+    padding: 0;
+    background: white;
+  }
+
+  .top-actions{
+    display: none;
+  }
+
+  .page{
+    width: 16in;
+    height: 9in;
+    min-height: 9in;
+    overflow: hidden;
+    page-break-after: always;
+    break-after: page;
+    margin: 0;
+    border: none;
+  }
+
+  *{
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
 @media(max-width:900px){.page{padding:145px 28px 78px}.page-header{padding-left:28px}.page-header img{height:58px}.cover .page-header img{height:70px}.page-footer{left:28px;right:28px}.cover h1{font-size:44px}h1{font-size:38px}h2{font-size:32px}.span3,.span4,.span6{grid-column:span 12}.contents-list{grid-template-columns:1fr}th,td{font-size:11px;padding:8px}}
 </style>
 </head>
