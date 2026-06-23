@@ -24,7 +24,7 @@
 body{font-family:Arial,Helvetica,sans-serif;background:var(--cream);color:var(--ink);line-height:1.42}
 .top-actions{position:fixed;top:18px;right:22px;z-index:1000}
 .pdf-button{background:var(--burgundy);color:white;border:none;padding:10px 16px;border-radius:5px;cursor:pointer;font-weight:bold;font-size:13px}
-.page{position:relative;width:var(--page-w);height:var(--page-h);min-height:var(--page-h);background:white;padding:120px 54px 60px;border-bottom:1px solid var(--line);page-break-after:always;overflow:hidden;margin:24px auto}
+.page{position:relative;width:var(--page-w);height:var(--page-h);min-height:var(--page-h);background:white;padding:120px 54px 60px;border-bottom:1px solid var(--line);page-break-after:always;overflow:hidden;margin:24px auto;break-inside:avoid}
 .page-header{position:absolute;top:0;left:0;right:0;height:92px;background:var(--burgundy);display:flex;align-items:center;padding-left:54px}
 .page-header img{height:60px;width:auto;max-width:none;object-fit:contain}
 .page-footer{position:absolute;bottom:18px;left:54px;right:54px;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--gray);letter-spacing:.4px;border-top:1px solid var(--line);padding-top:10px}
@@ -88,14 +88,25 @@ th:first-child,td:first-child{text-align:left}
     overflow: hidden;
     page-break-after: always;
     break-after: page;
+    break-inside: avoid;
   }
+
+  .contents-list{
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  .span3{grid-column:span 3 !important}
+  .span4{grid-column:span 4 !important}
+  .span6{grid-column:span 6 !important}
+  .span12{grid-column:span 12 !important}
 
   *{
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
 }
-@media(max-width:900px){.page{padding:145px 28px 78px}.page-header{padding-left:28px}.page-header img{height:58px}.cover .page-header img{height:70px}.page-footer{left:28px;right:28px}.cover h1{font-size:44px}h1{font-size:38px}h2{font-size:32px}.span3,.span4,.span6{grid-column:span 12}.contents-list{grid-template-columns:1fr}th,td{font-size:11px;padding:8px}}
+@media screen and (max-width:900px){.page{padding:145px 28px 78px}.page-header{padding-left:28px}.page-header img{height:58px}.cover .page-header img{height:70px}.page-footer{left:28px;right:28px}.cover h1{font-size:44px}h1{font-size:38px}h2{font-size:32px}.span3,.span4,.span6{grid-column:span 12}.contents-list{grid-template-columns:1fr}th,td{font-size:11px;padding:8px}}
 </style>
 </head>
 
